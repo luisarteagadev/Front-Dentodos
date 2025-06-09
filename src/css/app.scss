@@ -1,0 +1,63 @@
+// app global css in SCSS form
+
+/* 1. DECLARACIÓN GLOBAL DE FUENTES (Tipografía) */
+@font-face {
+  font-family: 'Gotham Rounded';
+  src: url('/fonts/Gotham Rounded/gothamrnd_book.otf') format('opentype');
+  font-weight: normal; /* Generalmente 400 o 'normal' */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gotham Rounded';
+  src: url('/fonts/Gotham Rounded/gothamrnd_bold.otf') format('opentype');
+  font-weight: bold; /* Generalmente 700 o 'bold' */
+  font-style: normal;
+}
+
+/* 2. DECLARACIÓN GLOBAL DE COLORES (Variables CSS) */
+:root {
+  /* Colores Primarios */
+  --color-primary-1: rgba(44, 169, 219, 1); /* Azul principal */
+  --color-primary-1-medium: rgba(44, 169, 219, 0.5);
+  --color-primary-1-low: rgba(44, 169, 219, 0.2);
+
+  --color-primary-2: rgba(51, 204, 204, 1); /* Cian/Turquesa */
+  --color-primary-2-medium: rgba(51, 204, 204, 0.5);
+  --color-primary-2-low: rgba(51, 204, 204, 0.2);
+
+  --color-primary-3: rgba(255, 255, 255, 1); /* Blanco */
+  --color-primary-3-medium: rgba(255, 255, 255, 0.5);
+  --color-primary-3-low: rgba(255, 255, 255, 0.2);
+
+  --color-primary-4: rgba(96, 96, 96, 1); /* Gris oscuro */
+  --color-primary-4-medium: rgba(96, 96, 96, 0.5);
+  --color-primary-4-low: rgba(96, 96, 96, 0.2);
+
+  /* Colores Secundarios */
+  --color-secondary-1: rgba(53, 92, 129, 1); /* Azul más oscuro/profundo */
+  --color-secondary-1-medium: rgba(53, 92, 129, 0.5);
+  --color-secondary-1-low: rgba(53, 92, 129, 0.2);
+
+  --color-secondary-2: rgba(25, 43, 68, 1); /* Azul muy oscuro, casi naval */
+  --color-secondary-2-medium: rgba(25, 43, 68, 0.5);
+  --color-secondary-2-low: rgba(25, 43, 68, 0.2);
+}
+
+/* 3. APLICACIÓN GLOBAL DE LA FUENTE Y ESTILOS BASE */
+body {
+  font-family: 'Gotham Rounded', Arial, sans-serif;
+}
+.nav-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  // background-color: rgba(255, 193, 7, 0.5);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &.active {
+    background-color: rgba(255, 193, 7, 0.9);
+  }
+}
