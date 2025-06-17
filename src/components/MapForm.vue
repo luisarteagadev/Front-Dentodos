@@ -1,55 +1,92 @@
 <template>
+  <div id="reviews">
+    <p id="r-title">reseñas google</p>
+    <div id="r-c-container">
+      <div class="card" v-for="(r, index) in reviews" :key="index">
+        <div class="card-profile-section">
+          <div class="avatar">{{ r.iniciales }}</div>
+          <div class="user-info">
+            <div class="user-name">{{ r.nombre }}</div>
+          </div>
+        </div>
+
+        <div class="rating-stars">
+          {{ '★'.repeat(r.estrellas) + '☆'.repeat(5 - r.estrellas) }}
+        </div>
+
+        <p class="review-text">
+          {{
+            expanded[index]
+              ? r.comentario
+              : r.comentario.slice(0, 250) + (r.comentario.length > 250 ? '...' : '')
+          }}
+        </p>
+
+        <div class="read-more-link" v-if="r.comentario.length > 250" @click="toggleReadMore(index)">
+          {{ expanded[index] ? 'Leer menos' : 'Leer más' }}
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div id="map-and-form">
     <div id="bg"></div>
-
     <div id="forms">
-      <div id="s-title">
-        <p>Separa tu cita o solicita tu cotización</p>
-      </div>
+      <div id="container-form-map">
+        <div id="s-title">
+          <p>Separa tu cita o solicita tu cotización</p>
+        </div>
 
-      <div id="f-content">
-        <form class="form">
-          <p class="title">Registrar una cita</p>
-          <p class="message">Anímate a mejorar tu salud bucal</p>
-          <div class="flex">
+        <div id="separate-appointment">
+          <form class="form">
+            <p class="title">Registrar una cita</p>
+            <p class="message">Anímate a mejorar tu salud bucal</p>
+
             <label>
-              <input required="" placeholder="" type="text" class="input" />
-              <span>Nombres</span>
+              <input required="" placeholder="Nombres" type="text" class="input" />
+              <!-- <span>Nombres</span> -->
             </label>
 
             <label>
-              <input required="" placeholder="" type="text" class="input" />
-              <span>Apellido</span>
+              <input required="" placeholder="Apellido" type="text" class="input" />
+              <!-- <span>Apellido</span> -->
             </label>
+            <label>
+              <input required="" placeholder="Email" type="email" class="input" />
+              <!-- <span>Email</span> -->
+            </label>
+            <label>
+              <input required="" placeholder="Telefono" type="text" class="input" />
+              <!-- <span>Email</span> -->
+            </label>
+
+            <label>
+              <input required="" placeholder="Servicio" type="text" class="input" />
+              <!-- <span>Servicio</span> -->
+            </label>
+            <label>
+              <input required="" placeholder="Mensaje (Opcional)" type="text" class="input" />
+              <!-- <span>Mensaje (Opcional)</span> -->
+            </label>
+            <button class="submit">Solicitar</button>
+            <p class="signin">Buscas conocer nuestros servicios? <a href="#">Ver Servicios</a></p>
+          </form>
+
+          <div id="map">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2758.8627505224426!2d-77.05854473807422!3d-12.087412178864072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c9c0e36cf265%3A0x68f04984c5067ea4!2sConsultorio%20Odontol%C3%B3gico%20Dentodos!5e0!3m2!1ses!2spe!4v1747638896576!5m2!1ses!2spe"
+              width="800"
+              height="450"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+            <button class="waze-button" @click="redirectToWaze">
+              <span> Ir con Waze </span>
+              <img class="waze-icon" src="/media/icons/waze.png" alt="waze" />
+            </button>
           </div>
-
-          <label>
-            <input required="" placeholder="" type="email" class="input" />
-            <span>Email</span>
-          </label>
-
-          <label>
-            <input required="" placeholder="" type="text" class="input" />
-            <span>Servicio</span>
-          </label>
-          <label>
-            <input required="" placeholder="" type="text" class="input" />
-            <span>Mensaje (Opcional)</span>
-          </label>
-          <button class="submit">Solicitar</button>
-          <p class="signin">Buscas conocer nuestros servicios? <a href="#">Ver Servicios</a></p>
-        </form>
-
-        <div id="map">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2758.8627505224426!2d-77.05854473807422!3d-12.087412178864072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c9c0e36cf265%3A0x68f04984c5067ea4!2sConsultorio%20Odontol%C3%B3gico%20Dentodos!5e0!3m2!1ses!2spe!4v1747638896576!5m2!1ses!2spe"
-            width="800"
-            height="450"
-            style="border: 0"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
         </div>
       </div>
     </div>
@@ -114,42 +151,8 @@
       </div>
     </div> -->
 
-    <div id="reviews">
-      <p id="r-title">Nuestras reseñas</p>
-      <div id="r-c-container">
-        <div class="card" v-for="(r, index) in reviews" :key="index">
-          <div class="card-profile-section">
-            <div class="avatar">{{ r.iniciales }}</div>
-            <div class="user-info">
-              <div class="user-name">{{ r.nombre }}</div>
-            </div>
-          </div>
-
-          <div class="rating-stars">
-            {{ '★'.repeat(r.estrellas) + '☆'.repeat(5 - r.estrellas) }}
-          </div>
-
-          <p class="review-text">
-            {{
-              expanded[index]
-                ? r.comentario
-                : r.comentario.slice(0, 250) + (r.comentario.length > 250 ? '...' : '')
-            }}
-          </p>
-
-          <div
-            class="read-more-link"
-            v-if="r.comentario.length > 250"
-            @click="toggleReadMore(index)"
-          >
-            {{ expanded[index] ? 'Leer menos' : 'Leer más' }}
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div id="c_wsp">
-      <a href="https://api.whatsapp.com/send?phone=51999988877" target="_blank">
+      <a href="https://api.whatsapp.com/send?phone=51932033644" target="_blank">
         <img src="/media/icons/whatsapp.png" alt="" />
       </a>
     </div>
@@ -173,15 +176,268 @@ export default {
     toggleReadMore(index) {
       this.expanded[index] = !this.expanded[index]
     },
+    redirectToWaze() {
+      // Cambia por la ubicación deseada
+      const latitude = -12.087036599196333
+      const longitude = -77.05754813492838
+
+      const wazeUrl = `https://waze.com/ul?ll=${latitude},${longitude}&navigate=yes`
+      window.open(wazeUrl, '_blank')
+    },
   },
 }
 </script>
 
 <style lang="scss" scoped>
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
 p {
   margin: 0;
   padding: 0;
 }
+
+#reviews {
+  width: 100%;
+  padding: 5vw 4vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2vw;
+  overflow-x: hidden;
+  // border: none solid rgb(80, 74, 74);
+  #r-title {
+    text-align: center;
+    font-weight: bold;
+    color: var(--color-secondary-1);
+    font-size: 2.5vw;
+    text-transform: uppercase;
+  }
+
+  #r-c-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 1.5vw;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 1vw 2vw;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      height: 0.5vw;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 1vw;
+      width: 1vw;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+  }
+
+  .card {
+    flex: 0 0 calc((100% - 4vw) / 4); // 4 tarjetas con espacio de 1.5vw entre cada una
+    // scroll-snap-align: start;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5vw;
+    box-shadow:
+      0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    background-color: #ffffff;
+    padding: 1.5vw;
+    display: flex;
+    flex-direction: column;
+    min-width: 20vw;
+    max-width: 25vw;
+  }
+  .card:first-child {
+    margin-left: 0;
+  }
+  .card:last-child {
+    margin-right: 0;
+  }
+
+  .card > * + * {
+    margin-top: 1vw;
+  }
+
+  .card-profile-section {
+    display: flex;
+    align-items: center;
+
+    > * + * {
+      margin-left: 1vw;
+    }
+  }
+
+  .avatar {
+    width: 3.5vw;
+    height: 3.5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ef4444;
+    color: #ffffff;
+    font-size: 1.2vw;
+    font-weight: bold;
+    border-radius: 50%;
+  }
+
+  .user-name {
+    color: #111827;
+    font-weight: 500;
+    font-size: 1vw;
+  }
+
+  .user-title {
+    color: #4b5563;
+    font-size: 0.9vw;
+  }
+
+  .rating-stars {
+    color: #ef4444;
+    font-size: 1.25vw;
+  }
+
+  .review-text {
+    color: #374151;
+    line-height: 1.6vw;
+    font-size: 1vw;
+  }
+
+  .read-more-link {
+    color: #ef4444;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 1vw;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+// #reviews {
+//   width: 100vw;
+//   padding: 5vw 4vw;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   gap: 2vw;
+//   overflow-x: hidden;
+
+//   #r-title {
+//     text-align: center;
+//     font-weight: bold;
+//     color: var(--color-secondary-1);
+//     font-size: 2.5vw;
+//     text-transform: uppercase;
+//   }
+
+//   #r-c-container {
+//     display: flex;
+//     flex-direction: row;
+//     gap: 1.5vw;
+//     overflow-x: auto;
+//     scroll-snap-type: x mandatory;
+//     padding: 2vw 3vw;
+//     -webkit-overflow-scrolling: touch;
+
+//     &::-webkit-scrollbar {
+//       height: 0.5vw;
+//     }
+
+//     &::-webkit-scrollbar-thumb {
+//       background: #ccc;
+//       border-radius: 1vw;
+//     }
+
+//     &::-webkit-scrollbar-track {
+//       background: transparent;
+//     }
+//   }
+
+//   .card {
+//     flex: 0 0 calc((100vw - 9vw) / 4); // 4 tarjetas con 3 espacios de 1.5vw
+//     scroll-snap-align: start;
+//     border: 0.1vw solid #d1d5db;
+//     border-radius: 1vw;
+//     box-shadow:
+//       0 1vw 1.5vw -0.3vw rgba(0, 0, 0, 0.1),
+//       0 0.4vw 0.6vw -0.2vw rgba(0, 0, 0, 0.05);
+//     background-color: #ffffff;
+//     padding: 2vw;
+//     display: flex;
+//     flex-direction: column;
+//     min-width: 20vw;
+//     max-width: 25vw;
+//   }
+
+//   .card > * + * {
+//     margin-top: 1vw;
+//   }
+
+//   .card-profile-section {
+//     display: flex;
+//     align-items: center;
+
+//     > * + * {
+//       margin-left: 1vw;
+//     }
+//   }
+
+//   .avatar {
+//     width: 3.5vw;
+//     height: 3.5vw;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     background-color: #ef4444;
+//     color: #ffffff;
+//     font-size: 1.2vw;
+//     font-weight: bold;
+//     border-radius: 50%;
+//   }
+
+//   .user-name {
+//     color: #111827;
+//     font-weight: 500;
+//     font-size: 1vw;
+//   }
+
+//   .user-title {
+//     color: #4b5563;
+//     font-size: 0.9vw;
+//   }
+
+//   .rating-stars {
+//     color: #ef4444;
+//     font-size: 1.3vw;
+//   }
+
+//   .review-text {
+//     color: #374151;
+//     line-height: 1.6;
+//     font-size: 1vw;
+//   }
+
+//   .read-more-link {
+//     color: #ef4444;
+//     font-weight: 500;
+//     cursor: pointer;
+//     font-size: 1vw;
+
+//     &:hover {
+//       text-decoration: underline;
+//     }
+//   }
+// }
+
 #map-and-form {
   #bg {
     background-color: transparent; /* Light blue background color */
@@ -196,6 +452,10 @@ p {
     height: 200px;
     margin-bottom: 0px;
     padding-bottom: 0px;
+    border: 1px solid rgb(44, 169, 219, 0.725);
+    border-top: none;
+    border-left: none;
+    border-right: none;
     z-index: 1;
   }
 
@@ -204,8 +464,8 @@ p {
     display: flex;
     width: 100%;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    // align-items: center;
+    // justify-content: center;
     text-align: center;
 
     margin: 0;
@@ -229,10 +489,14 @@ p {
         }
       }
     }
-
-    #f-content {
+    #container-form-map {
+      width: 100%;
+      // border: 1px solid rgb(44, 169, 219, 0.725);
+      margin: 0px;
+    }
+    #separate-appointment {
       display: flex;
-      align-items: center;
+      // align-items: center;
       justify-content: space-between;
       margin: 0 2vw;
       width: 86vw;
@@ -259,8 +523,12 @@ p {
             width: 100%;
             padding: 1vw 1vw 1.5vw 1vw;
             outline: 0;
+
             border: 1px solid rgba(105, 105, 105, 0.397);
             border-radius: 1vw;
+            &::placeholder {
+              font-size: 1.1vw; // aquí ajustas el tamaño del placeholder
+            }
           }
 
           .input + span {
@@ -396,15 +664,91 @@ p {
         align-items: center;
         justify-content: center;
         width: 50vw;
-        height: 33vw;
+        height: 40vw;
         border-radius: 2vw;
         overflow: hidden;
-
+        position: relative;
         iframe {
           width: 100%;
           height: 100%;
           border: none;
           border-radius: 2vw;
+        }
+
+        .waze-button {
+          background-color: var(--color-primary-1-light);
+          color: white;
+          border: none;
+          padding: 0.5vw 1.2vw;
+          border-radius: 0.5vw;
+          cursor: pointer;
+          font-size: 1vw;
+          font-weight: bold;
+          transition: background-color 0.3s ease;
+          position: absolute;
+          top: 1vw;
+          right: 1vw;
+          display: flex;
+          align-items: center;
+
+          &:hover {
+            background-color: var(--color-primary-1);
+          }
+
+          .waze-icon {
+            width: 2.5vw;
+            height: 2.5vw;
+          }
+        }
+      }
+
+      @media (max-width: $breakpoint-lg) {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+
+        .form {
+          width: 50vw;
+
+          label {
+            // position: relative;
+            // display: flex;
+            // flex-direction: column;
+            // align-items: start;
+
+            .input + span {
+              // position: absolute;
+              // left: 1vw;
+              // top: 2vw;
+              // color: grey;
+              // font-size: 0.5em;
+              // cursor: text;
+              // transition: 0.3s ease;
+            }
+
+            .input:placeholder-shown + span {
+              top: 15px;
+              font-size: 0.6em;
+            }
+
+            .input:focus + span,
+            .form label .input:valid + span {
+              top: 2.25vw;
+              font-size: 0.7em;
+              font-weight: 600;
+            }
+
+            .input:valid + span {
+              color: green;
+            }
+
+            .input:invalid:not(:placeholder-shown) + span {
+              color: red;
+            }
+          }
+        }
+        #separate-appointment {
+          align-items: center;
         }
       }
     }
@@ -442,9 +786,15 @@ p {
       filter: invert(1);
       transition: all 250ms;
 
+      // &:hover {
+      //   filter: invert(0);
+      // }
       &:hover {
-        filter: invert(0);
+        transform: scale(1.1);
       }
+    }
+    &:hover {
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
     }
   }
 
@@ -542,122 +892,5 @@ p {
   //     text-decoration: underline;
   //   }
   // }
-  #reviews {
-    width: 100%;
-    background-color: rgba(44, 169, 219, 0.725);
-    padding-bottom: 5vw;
-    margin-bottom: -1vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2vw;
-    padding-right: 16px;
-    padding-left: 16px;
-    #r-title {
-      text-align: center;
-      font-weight: bold;
-      color: white;
-      font-size: 2.5vw;
-    }
-
-    #r-c-container {
-      display: flex;
-      flex-direction: row;
-      gap: 1.5vw;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding: 1vw 2vw;
-      -webkit-overflow-scrolling: touch;
-
-      &::-webkit-scrollbar {
-        height: 0.6vw;
-      }
-
-      &::-webkit-scrollbar-thumb {
-        background: #ccc;
-        border-radius: 10px;
-      }
-
-      &::-webkit-scrollbar-track {
-        background: transparent;
-      }
-    }
-
-    .card {
-      flex: 0 0 calc((100% - 6vw) / 4); // 4 tarjetas con espacio de 1.5vw entre cada una
-      scroll-snap-align: start;
-      border: 1px solid #d1d5db;
-      border-radius: 0.5vw;
-      box-shadow:
-        0 10px 15px -3px rgba(0, 0, 0, 0.1),
-        0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      background-color: #ffffff;
-      padding: 1.5vw;
-      display: flex;
-      flex-direction: column;
-      min-width: 220px;
-      max-width: 500px;
-    }
-
-    .card > * + * {
-      margin-top: 1vw;
-    }
-
-    .card-profile-section {
-      display: flex;
-      align-items: center;
-
-      > * + * {
-        margin-left: 1vw;
-      }
-    }
-
-    .avatar {
-      height: 3vw;
-      width: 3vw;
-      min-height: 40px;
-      min-width: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #ef4444;
-      color: #ffffff;
-      font-size: 1.125vw;
-      font-weight: bold;
-      border-radius: 50%;
-    }
-
-    .user-name {
-      color: #111827;
-      font-weight: 500;
-      font-size: 1vw;
-    }
-
-    .user-title {
-      color: #4b5563;
-      font-size: 0.875vw;
-    }
-
-    .rating-stars {
-      color: #ef4444;
-      font-size: 1.25vw;
-    }
-
-    .review-text {
-      color: #374151;
-      line-height: 1.625;
-      font-size: 1vw;
-    }
-
-    .read-more-link {
-      color: #ef4444;
-      font-weight: 500;
-      cursor: pointer;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
 }
 </style>

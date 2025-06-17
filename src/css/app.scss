@@ -19,7 +19,9 @@
 :root {
   /* Colores Primarios */
   --color-primary-1: rgba(44, 169, 219, 1); /* Azul principal */
+  --color-primary-1-light: rgb(44, 169, 219, 0.725);
   --color-primary-1-medium: rgba(44, 169, 219, 0.5);
+
   --color-primary-1-low: rgba(44, 169, 219, 0.2);
 
   --color-primary-2: rgba(51, 204, 204, 1); /* Cian/Turquesa */
@@ -42,8 +44,11 @@
   --color-secondary-2: rgba(25, 43, 68, 1); /* Azul muy oscuro, casi naval */
   --color-secondary-2-medium: rgba(25, 43, 68, 0.5);
   --color-secondary-2-low: rgba(25, 43, 68, 0.2);
+  --altura-seccion: 60rem;
 }
-
+html {
+  font-size: 16px; // 1rem = 16px (puedes ajustar esto si prefieres otra escala)
+}
 /* 3. APLICACIÓN GLOBAL DE LA FUENTE Y ESTILOS BASE */
 body {
   font-family: 'Gotham Rounded', Arial, sans-serif;
@@ -60,4 +65,8 @@ body {
   &.active {
     background-color: rgba(255, 193, 7, 0.9);
   }
+}
+.q-carousel__control--prev,
+.q-carousel__control--next {
+  font-size: 40px; /* Cambia el tamaño de las flechas */
 }
