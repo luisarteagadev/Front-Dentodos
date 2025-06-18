@@ -183,6 +183,41 @@
           </div>
         </div>
       </div>
+
+      <div id="container-offers">
+        <div id="s-title">
+          <p></p>
+          <p>Ofertas</p>
+          <p>Descuentos especiales, pensados para cuidar tu sonrisa y tu bolsillo.</p>
+        </div>
+
+        <div id="tarj_price">
+          <div class="card">
+            <!-- <p class="sub-text">Ofertas especiales</p> -->
+            <p class="main-text">¡Tu limpieza dental con 30% menos! Haz clic y aprovecha.</p>
+            <a href="https://api.whatsapp.com/send?phone=51932033644" target="_blank">
+              <p>Comprar</p>
+              <img src="/media/icons/next.png" alt="" />
+            </a>
+          </div>
+          <div class="card">
+            <p class="main-text">
+              Cupón de S/ 30 soles de descuento, válido para compras desde S/150 soles.
+            </p>
+            <a href="https://api.whatsapp.com/send?phone=51932033644" target="_blank">
+              <p>Comprar</p>
+              <img src="/media/icons/next.png" alt="" />
+            </a>
+          </div>
+          <div class="card">
+            <p class="main-text">¡Instalación de brackets brasileros a S/600 soles!</p>
+            <a href="https://api.whatsapp.com/send?phone=51932033644" target="_blank">
+              <p>Comprar</p>
+              <img src="/media/icons/next.png" alt="" />
+            </a>
+          </div>
+        </div>
+      </div>
       <div id="services">
         <!-- <div id="container-tratamientos">
           <div id="s-title">
@@ -250,7 +285,7 @@
           </div>
         </div> -->
 
-        <div id="s-title">
+        <!-- <div id="s-title">
           <p></p>
           <p>Ofertas</p>
           <p>Descuentos especiales, pensados para cuidar tu sonrisa y tu bolsillo.</p>
@@ -258,7 +293,6 @@
 
         <div id="tarj_price">
           <div class="card">
-            <!-- <p class="sub-text">Ofertas especiales</p> -->
             <p class="main-text">¡Tu limpieza dental con 30% menos! Haz clic y aprovecha.</p>
             <a href="https://api.whatsapp.com/send?phone=51932033644" target="_blank">
               <p>Comprar</p>
@@ -281,7 +315,7 @@
               <img src="/media/icons/next.png" alt="" />
             </a>
           </div>
-        </div>
+        </div> -->
       </div>
 
       <div id="personal">
@@ -290,7 +324,7 @@
           <p>Un equipo de expertos capacitados y comprometidos con tu bienestar.</p>
         </div>
 
-        <div id="pro-team">
+        <!-- <div id="pro-team">
           <div class="q-pa-md">
             <q-carousel
               v-model="slide"
@@ -434,6 +468,42 @@
               </q-carousel-slide>
             </q-carousel>
           </div>
+        </div> -->
+        <div id="pro-team">
+          <div class="q-pa-md">
+            <q-carousel
+              v-model="slide"
+              transition-prev="slide-right"
+              transition-next="slide-left"
+              swipeable
+              animated
+              :autoplay="autoplay"
+              control-color="amber"
+              navigation
+              infinite
+              padding
+              arrows
+              height="auto"
+            >
+              <q-carousel-slide
+                v-for="(persona, index) in personas"
+                :key="index"
+                :name="index"
+                class="column items-center q-px-md"
+              >
+                <div class="card column items-center">
+                  <div class="img-pro">
+                    <img :src="persona.img" :class="persona.imgClass || ''" alt="" />
+                  </div>
+                  <p class="pro-name">{{ persona.nombre }}</p>
+                  <p class="pro-COP">{{ persona.cop }}</p>
+                  <p class="pro-area">{{ persona.area }}</p>
+                  <p class="pro-desc" v-if="pro_view">{{ persona.desc }}</p>
+                  <a @click="pro_view = !pro_view">{{ pro_view ? 'Ver menos' : 'Ver más' }}</a>
+                </div>
+              </q-carousel-slide>
+            </q-carousel>
+          </div>
         </div>
       </div>
 
@@ -557,7 +627,7 @@ import NavigationBar from 'src/components/Navigation/NavegationBar.vue'
 import MapAndForm from 'src/components/MapForm.vue'
 import EndFooter from 'src/components/EndFooter.vue'
 import { VIDEOS } from '../constants'
-
+import { PERSONAL } from '../constants'
 export default {
   components: { NavigationBar, MapAndForm, EndFooter },
   data() {
@@ -567,15 +637,21 @@ export default {
       testimonio1: VIDEOS.testimonio1,
       testimonio2: VIDEOS.testimonio2,
       testimonio3: VIDEOS.testimonio3,
+      personas: PERSONAL,
+      groupedPersonas: [],
     }
   },
   mounted() {
     // Cuando el componente se monta, se agrega un "escuchador" al scroll
     window.addEventListener('scroll', this.handleScroll)
+    this.groupSlides()
+    window.addEventListener('resize', this.groupSlides)
   },
+
   beforeUnmount() {
     // Limpieza del escuchador cuando el componente se elimina
     window.removeEventListener('scroll', this.handleScroll)
+    window.removeEventListener('resize', this.groupSlides)
   },
   setup() {
     // --- INICIO: Lógica del Carrusel de Testimonios (YouTube) ---
@@ -761,6 +837,21 @@ export default {
     },
     routerIntegrales() {
       this.$router.push('TInte')
+    },
+    groupSlides() {
+      const width = window.innerWidth
+      let perSlide = 1
+
+      if (width > 920) {
+        perSlide = 4
+      } else if (width > 720) {
+        perSlide = 2
+      }
+
+      this.groupedPersonas = []
+      for (let i = 0; i < this.personas.length; i += perSlide) {
+        this.groupedPersonas.push(this.personas.slice(i, i + perSlide))
+      }
     },
   },
 }
