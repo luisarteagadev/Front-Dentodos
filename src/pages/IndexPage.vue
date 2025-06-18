@@ -32,7 +32,91 @@
           </a>
         </div>
       </div>
+      <div class="container-services">
+        <div id="s-title">
+          <p>Nuestros Servicios</p>
+          <p class="title-service">Soluciones dentales oportunas para cada necesidad</p>
+          <p>
+            Ofrecemos una experiencia dental confiable, cercana y adaptada a tus expectativas, con
+            un enfoque integral para que sonrías con confianza.
+          </p>
+        </div>
 
+        <div id="services-cards-enterprise-2">
+          <div class="card">
+            <div class="c-bg-color">
+              <div class="card-icon">
+                <img src="/media/icons/med-exam.png" alt="" />
+              </div>
+              <div class="card-text">
+                <p class="ct-title">Diseño de Sonrisa</p>
+                <p class="ct-desc">
+                  Transforma la apariencia, color y tamaño de tus dientes.Lúcete con una sonrisa
+                  radiante, natural y hecha a tu medida.
+                </p>
+              </div>
+              <a @click="routerIntegrales()">
+                <p>Ver Más</p>
+                <img src="/media/icons/next.png" alt="" />
+              </a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="c-bg-color">
+              <div class="card-icon">
+                <img src="/media/icons/med-enterprise.png" alt="" />
+              </div>
+              <div class="card-text">
+                <p class="ct-title">Atención Dental 24 horas</p>
+                <p class="ct-desc">
+                  Atención dental diurna y nocturna los 7 días de la semana. Acude a nosotros con
+                  tranquilidad, estamos disponibles cuando más lo necesitas.
+                </p>
+              </div>
+              <a @click="scrollToFormulario()">
+                <p>Separar una cita</p>
+                <img src="/media/icons/next.png" alt="" />
+              </a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="c-bg-color">
+              <div class="card-icon">
+                <img src="/media/icons/med-campain.png" alt="" />
+              </div>
+              <div class="card-text">
+                <p class="ct-title">Servicio a domicilio</p>
+                <p class="ct-desc">
+                  Dentista cerca de ti sin salir de casa.Atención profesional en la comodidad de tu
+                  hogar, porque tu bienestar no depende de la distancia.
+                </p>
+              </div>
+              <a @click="scrollToFormulario()">
+                <p>Separar una cita</p>
+                <img src="/media/icons/next.png" alt="" />
+              </a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="c-bg-color">
+              <div class="card-icon">
+                <img src="/media/icons/med-ocupational.png" alt="" />
+              </div>
+              <div class="card-text">
+                <p class="ct-title">Ortodoncia</p>
+                <p class="ct-desc">
+                  Consigue una sonrisa alineada y saludable. Recupera tu confianza y disfruta de una
+                  sonrisa que refleje tu mejor versión.
+                </p>
+              </div>
+              <a @click="scrollToFormulario()">
+                <p>Separar una cita</p>
+                <img src="/media/icons/next.png" alt="" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
       <div id="services">
         <div id="s-title">
           <p>Nuestros Servicios</p>
@@ -117,6 +201,7 @@
             </div>
           </div>
         </div>
+
         <div id="container-tratamientos">
           <div id="s-title">
             <p>Nuestros Tratamientos</p>

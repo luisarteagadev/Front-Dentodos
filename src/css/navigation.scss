@@ -484,14 +484,11 @@
       }
 
       #nav-options {
-        display: flex;
+        display: none;
         width: 100%;
-        overflow: hidden;
         position: absolute;
         max-height: 0px;
-        transition:
-          max-height 0.3s ease,
-          padding 0.3s ease;
+        transition: all 300ms;
         top: 100%;
         left: 0;
         background-color: #f8f8f8;
@@ -569,6 +566,7 @@
       }
 
       #nav-options.show {
+        display: flex;
         max-height: 100vh;
         padding: 2vw 4vw;
       }
@@ -589,7 +587,7 @@
         position: relative !important;
         align-items: center;
         width: 100%;
-        height: 4rem;
+        height: 8rem;
         justify-content: space-between;
 
         padding: 3rem 1.5rem;
@@ -602,22 +600,21 @@
         #nav-options {
           position: relative !important;
           width: auto !important;
-          display: flex !important;
           flex-direction: row !important;
           align-items: center !important;
-          gap: 1rem !important;
+          gap: 2rem !important;
           padding: 0 !important;
           top: 0px !important;
           background-color: transparent !important;
 
           div {
             a {
-              font-size: $font-size-sm;
+              font-size: $font-size-md;
             }
           }
 
           .options__cotiza {
-            font-size: $font-size-sm;
+            font-size: $font-size-md;
           }
         }
       }
