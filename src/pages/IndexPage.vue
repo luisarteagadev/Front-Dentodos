@@ -477,7 +477,7 @@
               transition-next="slide-left"
               swipeable
               animated
-              :autoplay="autoplay"
+              :autoplay="false"
               control-color="amber"
               navigation
               infinite
@@ -486,19 +486,21 @@
               height="auto"
             >
               <q-carousel-slide
-                v-for="(persona, index) in personas"
+                v-for="(persona, index) in groupedPersonas"
                 :key="index"
                 :name="index"
-                class="column items-center q-px-md"
+                id="pro-card-container"
               >
-                <div class="card column items-center">
+                <!-- class="column items-center q-px-md" -->
+
+                <div class="card column items-center" v-for="(p, i) in persona" :name="i" :key="i">
                   <div class="img-pro">
-                    <img :src="persona.img" :class="persona.imgClass || ''" alt="" />
+                    <img :src="p.img" :class="p.imgClass || ''" alt="" />
                   </div>
-                  <p class="pro-name">{{ persona.nombre }}</p>
-                  <p class="pro-COP">{{ persona.cop }}</p>
-                  <p class="pro-area">{{ persona.area }}</p>
-                  <p class="pro-desc" v-if="pro_view">{{ persona.desc }}</p>
+                  <p class="pro-name">{{ p.nombre }}</p>
+                  <p class="pro-COP">{{ p.cop }}</p>
+                  <p class="pro-area">{{ p.area }}</p>
+                  <p class="pro-desc" v-if="pro_view">{{ p.desc }}</p>
                   <a @click="pro_view = !pro_view">{{ pro_view ? 'Ver menos' : 'Ver más' }}</a>
                 </div>
               </q-carousel-slide>
@@ -841,12 +843,13 @@ export default {
     groupSlides() {
       const width = window.innerWidth
       let perSlide = 1
-
-      if (width > 920) {
-        perSlide = 4
-      } else if (width > 720) {
+      if (width > 768) {
         perSlide = 2
       }
+      if (width > 992) {
+        perSlide = 4
+      }
+      console.log(perSlide)
 
       this.groupedPersonas = []
       for (let i = 0; i < this.personas.length; i += perSlide) {

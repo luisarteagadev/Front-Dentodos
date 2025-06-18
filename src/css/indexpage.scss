@@ -1033,6 +1033,8 @@ q-page {
         flex-direction: row;
         .card {
           height: 32rem;
+          padding: 3rem;
+
           .main-text {
             font-weight: bold;
             font-size: calc($font-size-xl - 2px);
@@ -1522,10 +1524,62 @@ q-page {
       gap: 0.2vw;
 
       p {
-        font-size: 2vw;
-        font-weight: bold;
-        color: var(--color-secondary-1);
-        text-transform: uppercase;
+        &:nth-child(1) {
+          font-size: $font-size-label-section-xs;
+          font-weight: bold;
+          color: var(--color-primary-1);
+        }
+
+        &:nth-child(2) {
+          font-size: $font-size-title-section-xs;
+          font-weight: bold;
+          color: var(--color-secondary-1);
+          text-transform: uppercase;
+        }
+
+        &:nth-child(3) {
+          font-weight: normal;
+          font-size: $font-size-decript-section-xs;
+
+          span {
+            font-weight: bold;
+            color: var(--color-primary-1);
+          }
+        }
+      }
+      @media (min-width: $breakpoint-md) {
+        p {
+          &:nth-child(1) {
+            font-size: $font-size-label-section-md;
+          }
+
+          &:nth-child(2) {
+            font-size: $font-size-title-section-md;
+          }
+
+          &:nth-child(3) {
+            font-size: $font-size-decript-section-md;
+            span {
+            }
+          }
+        }
+      }
+      @media (min-width: $breakpoint-lg) {
+        p {
+          &:nth-child(1) {
+            font-size: $font-size-label-section-lg;
+          }
+
+          &:nth-child(2) {
+            font-size: $font-size-title-section-lg;
+          }
+
+          &:nth-child(3) {
+            font-size: $font-size-decript-section-lg;
+            span {
+            }
+          }
+        }
       }
     }
 
@@ -1795,75 +1849,95 @@ q-page {
 
     // }
     #pro-team {
-      .card {
-        width: 35rem;
-        height: 35rem;
-        text-align: center;
+      width: 90%;
+      #pro-card-container {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 0.8rem;
 
-        .img-pro {
-          width: 16rem;
-          height: 16rem;
-          border-radius: 50%;
-          overflow: hidden;
-          margin-bottom: 1rem;
+        .card {
+          width: 35rem;
+          padding: 1rem;
+          // height: 40rem;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.8rem;
 
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
+          .img-pro {
+            width: 16rem;
+            height: 16rem;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 1rem;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              object-position: center;
+            }
+
+            .img-pro--carla {
+              height: 135%;
+              width: auto;
+              object-position: -3rem -3rem;
+            }
           }
 
-          &.img-pro--carla {
-            height: 130% !important;
-            width: auto !important;
-            object-position: -2vw -2.5vw !important;
+          .pro-name {
+            font-size: 2rem;
+            font-weight: bold;
+          }
+
+          .pro-COP,
+          .pro-area,
+          .pro-desc {
+            font-size: 1.5rem;
+            font-weight: normal;
+          }
+
+          a {
+            font-size: 1.4rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: underline;
+            margin-top: 0.5rem;
           }
         }
-
-        .pro-name {
-          font-size: 2rem;
-          font-weight: bold;
-        }
-
-        .pro-COP,
-        .pro-area,
-        .pro-desc {
-          font-size: 1.5rem;
-          font-weight: normal;
-        }
-
-        a {
-          font-size: 1.4rem;
-          font-weight: bold;
-          cursor: pointer;
-          text-decoration: underline;
-          margin-top: 0.5rem;
+        @media (min-width: $breakpoint-md) {
+          flex-direction: row;
+          justify-content: center;
+          gap: 1rem;
+          .card {
+            min-height: 40rem;
+          }
+          // .card {
+          //   width: 30rem;
+          // }
         }
       }
     }
-    @media (max-width: $breakpoint-sm) {
-      flex-direction: column;
-      align-items: center;
 
-      .card {
-        width: 20vw;
-        margin-bottom: 5vw;
+    // @media (max-width: $breakpoint-sm) {
+    //   flex-direction: column;
+    //   align-items: center;
 
-        p {
-          font-size: 9px;
-        }
-        a {
-          font-size: 6px;
-        }
-        //   font-size: 4vw;
-        // }
-      }
-    }
+    //   .card {
+    //     width: 20vw;
+    //     margin-bottom: 5vw;
+
+    //     p {
+    //       font-size: 9px;
+    //     }
+    //     a {
+    //       font-size: 6px;
+    //     }
+    //     //   font-size: 4vw;
+    //     // }
+    //   }
+    // }
     // #pro-container {
     //   display: grid;
     //   grid-template-columns: calc(80vw / 3) calc(80vw / 3) calc(80vw / 3);
