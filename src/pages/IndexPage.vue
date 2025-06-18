@@ -32,7 +32,7 @@
           </a>
         </div>
       </div>
-      <div class="container-services">
+      <div id="" class="container-services">
         <div id="s-title">
           <p>Nuestros Servicios</p>
           <p class="title-service">Soluciones dentales oportunas para cada necesidad</p>
@@ -117,7 +117,7 @@
           </div>
         </div>
       </div>
-      <div class="container-tratamientos">
+      <div id="services-cards-personal" class="container-tratamientos">
         <div id="s-title">
           <p>Nuestros Tratamientos</p>
           <p>Descubre nuestra gama de tratamientos por especialidad.</p>
@@ -218,8 +218,8 @@
           </div>
         </div>
       </div>
-      <div id="services">
-        <!-- <div id="container-tratamientos">
+      <!-- <div id="services">
+        <div id="container-tratamientos">
           <div id="s-title">
             <p>Nuestros Tratamientos</p>
             <p>Descubre nuestra gama de tratamientos por especialidad.</p>
@@ -283,9 +283,9 @@
               </div>
             </div>
           </div>
-        </div> -->
+        </div>
 
-        <!-- <div id="s-title">
+        <div id="s-title">
           <p></p>
           <p>Ofertas</p>
           <p>Descuentos especiales, pensados para cuidar tu sonrisa y tu bolsillo.</p>
@@ -315,8 +315,8 @@
               <img src="/media/icons/next.png" alt="" />
             </a>
           </div>
-        </div> -->
-      </div>
+        </div>
+      </div> -->
 
       <div id="personal">
         <div id="s-title">
@@ -509,12 +509,60 @@
         </div>
       </div>
 
-      <div id="testimonials">
+      <div class="#testimonials">
         <div id="s-title">
+          <p></p>
           <p>Testimonios</p>
+          <p></p>
         </div>
 
-        <div class="carousel-container">
+        <div id="pro-team">
+          <div class="q-pa-md">
+            <q-carousel
+              v-model="slide2"
+              transition-prev="slide-right"
+              transition-next="slide-left"
+              swipeable
+              animated
+              :autoplay="true"
+              control-color="amber"
+              navigation
+              infinite
+              padding
+              arrows
+              height="auto"
+              id="pro-card-container"
+            >
+              <q-carousel-slide :name="14">
+                <div class="card">
+                  <video class="video-testimonial" controls>
+                    <source :src="testimonio1" type="video/mp4" />
+                    Tu navegador no soporta el video.
+                  </video>
+                </div>
+              </q-carousel-slide>
+
+              <q-carousel-slide :name="15">
+                <div class="card">
+                  <video class="video-testimonial" controls>
+                    <source :src="testimonio2" type="video/mp4" />
+                    Tu navegador no soporta el video.
+                  </video>
+                </div>
+              </q-carousel-slide>
+
+              <q-carousel-slide :name="16">
+                <div class="card">
+                  <video class="video-testimonial" controls>
+                    <source :src="testimonio3" type="video/mp4" />
+                    Tu navegador no soporta el video.
+                  </video>
+                </div>
+              </q-carousel-slide>
+            </q-carousel>
+          </div>
+        </div>
+        <!-- <div class="carousel-container">
           <div id="pro-team">
             <div class="q-pa-md">
               <q-carousel
@@ -531,7 +579,6 @@
                 arrows
                 height="auto"
               >
-                <!-- Video 1 -->
                 <q-carousel-slide :name="3">
                   <div>
                     <video class="video-testimonial" controls>
@@ -541,7 +588,6 @@
                   </div>
                 </q-carousel-slide>
 
-                <!-- Video 2 -->
                 <q-carousel-slide :name="4">
                   <div class="">
                     <video class="video-testimonial" controls>
@@ -551,7 +597,6 @@
                   </div>
                 </q-carousel-slide>
 
-                <!-- Video 3 -->
                 <q-carousel-slide :name="5">
                   <div class="">
                     <video class="video-testimonial" controls>
@@ -563,7 +608,7 @@
               </q-carousel>
             </div>
           </div>
-          <!-- <div class="carousel-track" ref="carouselTrackRef">
+          <div class="carousel-track" ref="carouselTrackRef">
             <div class="carousel-slide">
               <video
                 width="560"
@@ -599,15 +644,15 @@
             </div>
           </div>
 
-
           <button class="carousel-button prev" aria-label="Video anterior" ref="prevButtonRef">
             &lt;
           </button>
           <button class="carousel-button next" aria-label="Siguiente video" ref="nextButtonRef">
             &gt;
           </button>
-          <div class="carousel-nav" ref="navDotsContainerRef"></div> -->
-        </div>
+          <div class="carousel-nav" ref="navDotsContainerRef"></div>
+
+        </div> -->
       </div>
     </div>
 
@@ -796,7 +841,7 @@ export default {
           ],
         },
         { label: 'Tratamientos', href: '#services-cards-personal' },
-        { label: 'Ofertas', href: '#tarj_price' }, // Enlace a una sección de la misma página
+        { label: 'Ofertas', href: '#container-offers' }, // Enlace a una sección de la misma página
         { label: 'Equipo', href: '#personal' },
         { label: 'Testimonios', href: '#testimonials' }, // Otro enlace a sección
         {
