@@ -117,99 +117,80 @@
           </div>
         </div>
       </div>
-      <div id="services">
+      <div class="container-tratamientos">
         <div id="s-title">
-          <p>Nuestros Servicios</p>
-          <p class="title-service">Soluciones dentales oportunas para cada necesidad</p>
-          <p>
-            Ofrecemos una experiencia dental confiable, cercana y adaptada a tus expectativas, con
-            un enfoque integral para que sonrías con confianza.
-          </p>
+          <p>Nuestros Tratamientos</p>
+          <p>Descubre nuestra gama de tratamientos por especialidad.</p>
+          <p></p>
         </div>
-
-        <div id="services-cards-enterprise-2">
+        <div id="services-cards-personal">
+          <!-- <div class="card" @click="routerIntegrales()"> -->
           <div class="card">
-            <div class="c-bg-color">
-              <div class="card-icon">
-                <img src="/media/icons/med-exam.png" alt="" />
-              </div>
-              <div class="card-text">
-                <p class="ct-title">Diseño de Sonrisa</p>
-                <p class="ct-desc">
-                  Transforma la apariencia, color y tamaño de tus dientes. <q-space /> Lúcete con
-                  una sonrisa radiante, natural y hecha a tu medida.
-                </p>
-              </div>
-              <a @click="routerIntegrales()">
-                <p>Ver Más</p>
-                <img src="/media/icons/next.png" alt="" />
-              </a>
+            <div class="card-content">
+              <span>Integrales</span>
+              <p>
+                El primer paso hacia una sonrisa sana.<q-space /> Ideal para prevenir, corregir y
+                preparar tu boca antes de cualquier tratamiento, con un enfoque en tu bienestar.
+              </p>
             </div>
           </div>
           <div class="card">
-            <div class="c-bg-color">
-              <div class="card-icon">
-                <img src="/media/icons/med-enterprise.png" alt="" />
-              </div>
-              <div class="card-text">
-                <p class="ct-title">Atención Dental 24 horas</p>
-                <p class="ct-desc">
-                  Atención dental diurna y nocturna los 7 días de la semana. <q-space /> Acude a
-                  nosotros con tranquilidad, estamos disponibles cuando más lo necesitas.
-                </p>
-              </div>
-              <a @click="scrollToFormulario()">
-                <p>Separar una cita</p>
-                <img src="/media/icons/next.png" alt="" />
-              </a>
+            <div class="card-content">
+              <span>Rehabilitación</span>
+              <p>
+                Restaura la estética y funcionalidad de tu sonrisa mediante tratamientos como
+                coronas, puentes y prótesis. <q-space />Mejora tu capacidad para masticar, hablar y
+                sonreír con confianza.
+              </p>
             </div>
           </div>
           <div class="card">
-            <div class="c-bg-color">
-              <div class="card-icon">
-                <img src="/media/icons/med-campain.png" alt="" />
-              </div>
-              <div class="card-text">
-                <p class="ct-title">Servicio a domicilio</p>
-                <p class="ct-desc">
-                  Dentista cerca de ti sin salir de casa. <q-space /> Atención profesional en la
-                  comodidad de tu hogar, porque tu bienestar no depende de la distancia.
-                </p>
-              </div>
-              <a @click="scrollToFormulario()">
-                <p>Separar una cita</p>
-                <img src="/media/icons/next.png" alt="" />
-              </a>
+            <div class="card-content">
+              <span>Periodoncia e Implantes</span>
+              <p>
+                Recupera la salud de tus encías y reemplaza los dientes perdidos con implantes de
+                calidad. <q-space />Logra una sonrisa completa y duradera.
+              </p>
             </div>
           </div>
           <div class="card">
-            <div class="c-bg-color">
-              <div class="card-icon">
-                <img src="/media/icons/med-ocupational.png" alt="" />
-              </div>
-              <div class="card-text">
-                <p class="ct-title">Ortodoncia</p>
-                <p class="ct-desc">
-                  Consigue una sonrisa alineada y saludable.<q-space /> Recupera tu confianza y
-                  disfruta de una sonrisa que refleje tu mejor versión.
-                </p>
-              </div>
-              <a @click="scrollToFormulario()">
-                <p>Separar una cita</p>
-                <img src="/media/icons/next.png" alt="" />
-              </a>
+            <div class="card-content">
+              <span>Endodoncia</span>
+              <p>
+                Alivia el dolor y salva tus dientes dañados, evitando la extracción.
+                <q-space />Limpiando la raíz de tu diente de manera rápida y efectiva.
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <span>Cirugía Oral / Maxilofacial</span>
+              <p>
+                Soluciones quirúrgicas para corregir problemas de la boca, mandíbula y rostro, con
+                resultados precisos.
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-content">
+              <span>Odontopediatría</span>
+              <p>
+                Cuidamos la salud dental de los más pequeños, con un enfoque cálido, preventivo y
+                divertido, creando experiencias positivas desde la primera visita y acompañándolos
+                en cada etapa de su desarrollo.
+              </p>
             </div>
           </div>
         </div>
-
-        <div id="container-tratamientos">
+      </div>
+      <div id="services">
+        <!-- <div id="container-tratamientos">
           <div id="s-title">
             <p>Nuestros Tratamientos</p>
             <p>Descubre nuestra gama de tratamientos por especialidad.</p>
             <p></p>
           </div>
           <div id="services-cards-personal">
-            <!-- <div class="card" @click="routerIntegrales()"> -->
             <div class="card">
               <div class="card-content">
                 <span>Integrales</span>
@@ -267,7 +248,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <div id="s-title">
           <p></p>

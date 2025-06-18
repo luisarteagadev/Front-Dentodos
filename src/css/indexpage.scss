@@ -98,7 +98,6 @@ q-page {
   // margin: 1rem 1rem;
   // height: auto;
   z-index: 1;
-  background-color: #e8e8e8;
 
   // nav {
   //   position: sticky;
@@ -111,6 +110,7 @@ q-page {
     margin: 0rem;
     width: 100%;
     height: $altura-seccion;
+
     padding: 10rem 1rem 10rem 1rem;
     // justify-content: center;
     background-image: url('/media/logos/prueba_logo.png');
@@ -246,6 +246,10 @@ q-page {
 
       // >= 1200px
       @media (min-width: $breakpoint-xl) {
+        height: calc($altura-seccion + 10rem);
+        #video-hero {
+          max-height: calc($altura-seccion + 10rem);
+        }
         .content {
           width: 55%;
           color: #ffffff;
@@ -268,6 +272,7 @@ q-page {
   }
   .container-services {
     max-height: $altura-seccion;
+
     display: flex;
     flex-direction: column;
     padding: 4rem 1rem 4rem 1rem;
@@ -282,13 +287,13 @@ q-page {
 
       p {
         &:nth-child(1) {
-          font-size: 1.5vw;
+          font-size: $font-size-label-section-xs;
           font-weight: bold;
           color: var(--color-primary-1);
         }
 
         &:nth-child(2) {
-          font-size: 2vw;
+          font-size: $font-size-title-section-xs;
           font-weight: bold;
           color: var(--color-secondary-1);
           text-transform: uppercase;
@@ -296,7 +301,7 @@ q-page {
 
         &:nth-child(3) {
           font-weight: normal;
-          font-size: 1.5vw;
+          font-size: $font-size-decript-section-xs;
 
           span {
             font-weight: bold;
@@ -304,9 +309,44 @@ q-page {
           }
         }
       }
+
+      @media (min-width: $breakpoint-md) {
+        p {
+          &:nth-child(1) {
+            font-size: $font-size-label-section-md;
+          }
+
+          &:nth-child(2) {
+            font-size: $font-size-title-section-md;
+          }
+
+          &:nth-child(3) {
+            font-size: $font-size-decript-section-md;
+            span {
+            }
+          }
+        }
+      }
+      @media (min-width: $breakpoint-lg) {
+        p {
+          &:nth-child(1) {
+            font-size: $font-size-label-section-lg;
+          }
+
+          &:nth-child(2) {
+            font-size: $font-size-title-section-lg;
+          }
+
+          &:nth-child(3) {
+            font-size: $font-size-decript-section-lg;
+            span {
+            }
+          }
+        }
+      }
     }
     #services-cards-enterprise-2 {
-      width: 100%;
+      width: 90%;
       display: grid;
       grid-template-columns: repeat(2, 1fr); /* 3 columnas iguales */
       gap: 1rem; /* Espacio entre los elementos */
@@ -559,20 +599,19 @@ q-page {
       }
     }
   }
-
-  #services {
+  .container-tratamientos {
+    max-height: $altura-seccion;
+    min-height: calc($altura-seccion - 10rem);
+    padding: 4rem 1rem 4rem 1rem;
+    border-radius: 1.6rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    background-color: #e8e8e8;
     text-align: center;
-    gap: 3vw;
-
-    #container-tratamientos {
-      padding: 16px 0px;
-      border-radius: 16px;
-      background: linear-gradient(to right, #e8e8e8 75%, #ffffff);
-    }
+    gap: 2rem;
+    padding: 1rem;
+    // background: linear-gradient(to right, #e8e8e8 75%, #ffffff);
     #s-title {
       display: flex;
       flex-direction: column;
@@ -580,13 +619,13 @@ q-page {
 
       p {
         &:nth-child(1) {
-          font-size: 1.5vw;
+          font-size: $font-size-label-section-xs;
           font-weight: bold;
           color: var(--color-primary-1);
         }
 
         &:nth-child(2) {
-          font-size: 2vw;
+          font-size: $font-size-title-section-xs;
           font-weight: bold;
           color: var(--color-secondary-1);
           text-transform: uppercase;
@@ -594,7 +633,7 @@ q-page {
 
         &:nth-child(3) {
           font-weight: normal;
-          font-size: 1.5vw;
+          font-size: $font-size-decript-section-xs;
 
           span {
             font-weight: bold;
@@ -602,206 +641,441 @@ q-page {
           }
         }
       }
-    }
-
-    #services-cards-enterprise-2 {
-      display: flex;
-      gap: 1vw;
-
-      .card {
-        background-color: var(--color-primary-1-low);
-        height: 25vw;
-        width: 20vw;
-        flex: 1;
-        border-radius: 1vw;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        position: relative;
-        transition: all 250ms;
-
-        .c-bg-color {
-          width: 100%;
-          height: 100%;
-          transition: all 250ms;
-        }
-
-        .card-icon {
-          position: absolute;
-          top: 1vw;
-          left: 1vw;
-          overflow: hidden;
-          height: 5vw;
-          width: 5vw;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background-color: var(--color-primary-2);
-          transition: all 250ms;
-
-          img {
-            width: 3vw;
-            filter: invert(1);
+      @media (min-width: $breakpoint-md) {
+        p {
+          &:nth-child(1) {
+            font-size: $font-size-label-section-md;
           }
-        }
 
-        a {
-          display: flex;
-          flex-direction: row;
-          font-family: 'Gotham Rounded', Arial, sans-serif;
-          justify-content: space-between;
-          margin-left: 1vw;
-          padding: 1vw;
-          width: 15vw;
-          color: white;
-          border-radius: 1vw;
-          transition: all 250ms;
-          border: none;
-          background-color: var(--color-primary-1);
-          position: absolute;
-          bottom: 1vw;
-          opacity: 0;
-          left: 1vw;
-          text-decoration: none;
+          &:nth-child(2) {
+            font-size: $font-size-title-section-md;
+          }
 
-          p {
-            &:nth-child(1) {
-              all: unset;
-              display: flex;
-              align-self: center;
-              color: white;
-              font-size: 1vw;
-              font-weight: bold;
+          &:nth-child(3) {
+            font-size: $font-size-decript-section-md;
+            span {
             }
           }
+        }
+      }
+      @media (min-width: $breakpoint-lg) {
+        p {
+          &:nth-child(1) {
+            font-size: $font-size-label-section-lg;
+          }
 
-          img {
-            width: 2vw;
-            margin-right: 1vw;
-            filter: invert(1);
+          &:nth-child(2) {
+            font-size: $font-size-title-section-lg;
+          }
+
+          &:nth-child(3) {
+            font-size: $font-size-decript-section-lg;
+            span {
+            }
+          }
+        }
+      }
+    }
+    #services-cards-personal {
+      // width: 90vw;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto;
+      gap: 1rem;
+      width: 90%;
+      .card {
+        display: flex;
+        align-self: center;
+        justify-self: center;
+        width: 20rem;
+        height: 15rem;
+        background: rgb(103, 225, 255);
+        transition: all 0.4s;
+        border-radius: 2vw;
+        box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+        font-size: 30px;
+        font-weight: 900;
+        /* z-index: -2; */
+        overflow: hidden;
+
+        .card-content {
+          display: flex;
+          align-self: flex-end;
+          justify-self: center;
+          height: 3rem;
+          width: 100%;
+          padding: 0 1vw;
+          background-color: var(--color-primary-1-medium);
+          transition: all 0.4s;
+          justify-content: start;
+          align-items: center;
+          position: relative;
+          flex-direction: column;
+          gap: 2px;
+          span {
+            position: relative;
+            // top: 1rem;
+            color: white;
+            font-size: $font-size-sm;
+            opacity: 1;
+            margin-bottom: 0.5rem;
+          }
+
+          p {
+            position: relative;
+            // top: 2rem;
+            color: white;
+            font-size: 0.8rem;
+            // margin: 0 1vw 0 0;
+            font-weight: normal;
+            text-align: justify;
+            opacity: 0;
+          }
+        }
+
+        &:hover {
+          border-radius: 2vw;
+          cursor: pointer;
+          transform: scale(1.1);
+          box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+
+          .card-content {
+            height: 10rem;
+            background-color: var(--color-primary-1);
+
+            span {
+              top: 1vw;
+            }
+
+            p {
+              opacity: 1;
+            }
+            @media (min-width: $breakpoint-md) {
+              height: 15rem;
+            }
           }
         }
 
         &:nth-child(1) {
-          background-image: url('/media/photos/SERVICIOS/DISEÑO DE SONRISA.JPG');
+          background-image: url('/media/photos/TRATAMIENTOS/INTEGRALES.jpeg');
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
         }
 
         &:nth-child(2) {
-          background-image: url('/media/photos/SERVICIOS/ATENCIÓN DENTAL 24 HRS.jpeg');
+          background-image: url('/media/photos/TRATAMIENTOS/REHABILITACIÓN.jpeg');
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
         }
 
         &:nth-child(3) {
-          background-image: url('/media/photos/SERVICIOS/SERVICIO A DOMICILIO.jpeg');
+          background-image: url('/media/photos/TRATAMIENTOS/PERIODONCIA E IMPLANTES.jpeg');
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
         }
 
         &:nth-child(4) {
-          background-image: url('/media/photos/SERVICIOS/ORTODONCIA.jpeg');
+          background-image: url('/media/photos/TRATAMIENTOS/ENDODONCIA.jpeg');
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
         }
 
-        &:hover {
+        &:nth-child(5) {
+          background-image: url('/media/photos/TRATAMIENTOS/CIRUGÍA ORAL _ MAXILOFACIAL.jpeg');
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+
+        &:nth-child(6) {
+          background-image: url('/media/photos/TRATAMIENTOS/ODONTOPEDIATRÍA.jpeg');
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+        @media (min-width: $breakpoint-md) {
+          width: 23rem;
+          height: 18rem;
+          .card-content {
+            height: 7rem;
+          }
+        }
+        @media (min-width: $breakpoint-xl) {
+          width: 36rem;
+          height: 24rem;
+          .card-content {
+            height: 6rem;
+          }
+        }
+      }
+      @media (min-width: $breakpoint-md) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        .card {
+          .card-content {
+            span {
+              font-size: $font-size-h1-sm;
+            }
+            p {
+              font-size: 1.4rem;
+            }
+          }
+        }
+      }
+      @media (min-width: $breakpoint-xl) {
+        gap: 5rem;
+      }
+    }
+
+    @media (min-width: $breakpoint-xl) {
+      min-height: $altura-seccion;
+    }
+  }
+  #services {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 3vw;
+    #container-tratamientos {
+      padding: 16px 0px;
+      border-radius: 16px;
+      background: linear-gradient(to right, #e8e8e8 75%, #ffffff);
+
+      #s-title {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2vw;
+
+        p {
+          &:nth-child(1) {
+            font-size: 1.5vw;
+            font-weight: bold;
+            color: var(--color-primary-1);
+          }
+
+          &:nth-child(2) {
+            font-size: 2vw;
+            font-weight: bold;
+            color: var(--color-secondary-1);
+            text-transform: uppercase;
+          }
+
+          &:nth-child(3) {
+            font-weight: normal;
+            font-size: 1.5vw;
+
+            span {
+              font-weight: bold;
+              color: var(--color-primary-1);
+            }
+          }
+        }
+      }
+
+      #services-cards-enterprise-2 {
+        display: flex;
+        gap: 1vw;
+
+        .card {
+          background-color: var(--color-primary-1-low);
+          height: 25vw;
+          width: 20vw;
+          flex: 1;
+          border-radius: 1vw;
+          transition: all 0.3s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          position: relative;
+          transition: all 250ms;
+
           .c-bg-color {
             width: 100%;
             height: 100%;
-            background-color: var(--color-secondary-1-medium);
+            transition: all 250ms;
           }
 
           .card-icon {
-            background-color: var(--color-secondary-1);
-            top: 1vw;
-            left: calc(15vw / 2);
-          }
-
-          .card-text {
-            all: unset;
             position: absolute;
-            text-align: center;
-            padding: 0 1vw;
-            width: 80%;
-            top: 8vw;
-            left: 50%;
-            transform: translate(-50%);
-            height: min-content;
+            top: 1vw;
+            left: 1vw;
+            overflow: hidden;
+            height: 5vw;
+            width: 5vw;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--color-primary-2);
+            transition: all 250ms;
 
-            .ct-title {
-              text-align: center;
-              justify-self: center;
-              color: white;
-              width: 90%;
-              padding: 0.5vw;
-              border-bottom: 0.2vw solid white;
-              margin-bottom: 1vw;
-            }
-
-            .ct-desc {
-              all: unset;
-              text-align: center;
-              color: white;
-
-              &:not(:empty) {
-                position: initial;
-                text-align: start;
-                font-weight: normal;
-                font-size: 0.75vw;
-                opacity: 1;
-              }
+            img {
+              width: 3vw;
+              filter: invert(1);
             }
           }
 
           a {
-            opacity: 1;
+            display: flex;
+            flex-direction: row;
+            font-family: 'Gotham Rounded', Arial, sans-serif;
+            justify-content: space-between;
+            margin-left: 1vw;
+            padding: 1vw;
+            width: 15vw;
+            color: white;
+            border-radius: 1vw;
+            transition: all 250ms;
+            border: none;
+            background-color: var(--color-primary-1);
+            position: absolute;
+            bottom: 1vw;
+            opacity: 0;
+            left: 1vw;
+            text-decoration: none;
+
+            p {
+              &:nth-child(1) {
+                all: unset;
+                display: flex;
+                align-self: center;
+                color: white;
+                font-size: 1vw;
+                font-weight: bold;
+              }
+            }
+
+            img {
+              width: 2vw;
+              margin-right: 1vw;
+              filter: invert(1);
+            }
+          }
+
+          &:nth-child(1) {
+            background-image: url('/media/photos/SERVICIOS/DISEÑO DE SONRISA.JPG');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+          }
+
+          &:nth-child(2) {
+            background-image: url('/media/photos/SERVICIOS/ATENCIÓN DENTAL 24 HRS.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+          }
+
+          &:nth-child(3) {
+            background-image: url('/media/photos/SERVICIOS/SERVICIO A DOMICILIO.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+          }
+
+          &:nth-child(4) {
+            background-image: url('/media/photos/SERVICIOS/ORTODONCIA.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+          }
+
+          &:hover {
+            .c-bg-color {
+              width: 100%;
+              height: 100%;
+              background-color: var(--color-secondary-1-medium);
+            }
+
+            .card-icon {
+              background-color: var(--color-secondary-1);
+              top: 1vw;
+              left: calc(15vw / 2);
+            }
+
+            .card-text {
+              all: unset;
+              position: absolute;
+              text-align: center;
+              padding: 0 1vw;
+              width: 80%;
+              top: 8vw;
+              left: 50%;
+              transform: translate(-50%);
+              height: min-content;
+
+              .ct-title {
+                text-align: center;
+                justify-self: center;
+                color: white;
+                width: 90%;
+                padding: 0.5vw;
+                border-bottom: 0.2vw solid white;
+                margin-bottom: 1vw;
+              }
+
+              .ct-desc {
+                all: unset;
+                text-align: center;
+                color: white;
+
+                &:not(:empty) {
+                  position: initial;
+                  text-align: start;
+                  font-weight: normal;
+                  font-size: 0.75vw;
+                  opacity: 1;
+                }
+              }
+            }
+
+            a {
+              opacity: 1;
+            }
+          }
+        }
+
+        .card-text {
+          padding: 1vw;
+          font-size: 1vw;
+          background-color: var(--color-primary-2);
+          text-align: start;
+          border-radius: 1vw;
+          margin: 0 1vw;
+          color: white;
+          font-weight: bold;
+          position: absolute;
+          bottom: 1vw;
+          left: 0vw;
+          transition: all 250ms;
+
+          .ct-title {
+            font-size: 1vw;
+            font-weight: bold;
+            text-align: start;
+            transition: all 250ms;
+          }
+
+          .ct-desc {
+            font-size: 0.05vw;
+            font-weight: bold;
+            text-align: start;
+            position: absolute;
+            bottom: 1vw;
+            left: 1vw;
+            opacity: 0;
+            transition: all ease-in 250ms;
           }
         }
       }
-
-      .card-text {
-        padding: 1vw;
-        font-size: 1vw;
-        background-color: var(--color-primary-2);
-        text-align: start;
-        border-radius: 1vw;
-        margin: 0 1vw;
-        color: white;
-        font-weight: bold;
-        position: absolute;
-        bottom: 1vw;
-        left: 0vw;
-        transition: all 250ms;
-
-        .ct-title {
-          font-size: 1vw;
-          font-weight: bold;
-          text-align: start;
-          transition: all 250ms;
-        }
-
-        .ct-desc {
-          font-size: 0.05vw;
-          font-weight: bold;
-          text-align: start;
-          position: absolute;
-          bottom: 1vw;
-          left: 1vw;
-          opacity: 0;
-          transition: all ease-in 250ms;
-        }
-      }
     }
-
     #services-cards-personal {
       width: 90vw;
       display: grid;
