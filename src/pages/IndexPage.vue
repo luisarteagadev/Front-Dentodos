@@ -509,7 +509,7 @@
         </div>
       </div>
 
-      <div class="#testimonials">
+      <div id="testimonials">
         <div id="s-title">
           <p></p>
           <p>Testimonios</p>
