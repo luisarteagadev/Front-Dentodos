@@ -687,7 +687,7 @@ q-page {
         display: flex;
         align-self: center;
         justify-self: center;
-        width: 16rem;
+        width: 17rem;
         height: 15rem;
         background: rgb(103, 225, 255);
         transition: all 0.4s;
@@ -702,16 +702,17 @@ q-page {
           display: flex;
           align-self: flex-end;
           justify-self: center;
-          height: 5rem;
+          height: 3rem;
           width: 100%;
-          padding: 0 1vw;
+          padding: 5px 14px;
           background-color: var(--color-primary-1-medium);
           transition: all 0.4s;
           justify-content: start;
           align-items: center;
           position: relative;
           flex-direction: column;
-          gap: 2px;
+          gap: 0.2rem;
+          // gap: 4px;
           span {
             position: relative;
             // top: 1rem;
@@ -740,7 +741,7 @@ q-page {
           box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
 
           .card-content {
-            height: 10rem;
+            height: 12rem;
             background-color: var(--color-primary-1);
 
             span {
@@ -750,8 +751,16 @@ q-page {
             p {
               opacity: 1;
             }
+            @media (min-width: $breakpoint-sm) {
+              height: 10rem;
+            }
+
             @media (min-width: $breakpoint-md) {
-              height: 15rem;
+              height: 14rem;
+            }
+
+            @media (min-width: $breakpoint-lg) {
+              height: 16rem;
             }
           }
         }
@@ -797,28 +806,54 @@ q-page {
           background-position: center;
           background-repeat: no-repeat;
         }
-        @media (min-width: $breakpoint-md) {
-          width: 23rem;
-          height: 18rem;
+        @media (min-width: $breakpoint-sm) {
+          width: auto;
+          height: 16rem;
           .card-content {
-            height: 7rem;
+            span {
+              font-size: 1.6rem;
+            }
+          }
+        }
+        @media (min-width: $breakpoint-md) {
+          width: auto;
+          height: 20rem;
+          .card-content {
+            height: 4rem;
+            span {
+              font-size: 1.8rem;
+            }
+            p {
+              font-size: 1rem;
+            }
+          }
+          // .card-content {
+          //   height: 8rem;
+          // }
+        }
+
+        @media (min-width: $breakpoint-lg) {
+          width: auto;
+          height: 24rem;
+          .card-content {
+            height: 5rem;
+            span {
+              font-size: 2.1rem;
+            }
+            p {
+              font-size: 1.4rem;
+            }
           }
         }
         @media (min-width: $breakpoint-xl) {
-          width: 36rem;
-          height: 24rem;
+          // width: 40rem;
+          width: auto;
+          height: 26rem;
           .card-content {
-            height: 6rem;
-          }
-        }
-      }
-      @media (min-width: $breakpoint-md) {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-        .card {
-          .card-content {
+            height: 5rem;
+            gap: 12px;
             span {
-              font-size: $font-size-h1-sm;
+              font-size: 2.1rem;
             }
             p {
               font-size: 1.4rem;
@@ -826,8 +861,34 @@ q-page {
           }
         }
       }
+      @media (min-width: $breakpoint-md) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        // .card {
+        //   .card-content {
+        //     span {
+        //       font-size: 1.8rem;
+        //     }
+        //     p {
+        //       font-size: 1.2rem;
+        //     }
+        //   }
+        // }
+      }
       @media (min-width: $breakpoint-xl) {
         gap: 5rem;
+
+        // .card {
+        //   .card-content {
+        //     // height: 9rem;
+        //     span {
+        //       font-size: 2.4rem;
+        //     }
+        //     p {
+        //       font-size: 1.4rem;
+        //     }
+        //   }
+        // }
       }
     }
 

@@ -129,8 +129,8 @@
             <div class="card-content">
               <span>Integrales</span>
               <p>
-                El primer paso hacia una sonrisa sana.<q-space /> Ideal para prevenir, corregir y
-                preparar tu boca antes de cualquier tratamiento, con un enfoque en tu bienestar.
+                El primer paso hacia una sonrisa sana.Ideal para prevenir, corregir y preparar tu
+                boca antes de cualquier tratamiento, con un enfoque en tu bienestar.
               </p>
             </div>
           </div>
@@ -139,8 +139,8 @@
               <span>Rehabilitación</span>
               <p>
                 Restaura la estética y funcionalidad de tu sonrisa mediante tratamientos como
-                coronas, puentes y prótesis. <q-space />Mejora tu capacidad para masticar, hablar y
-                sonreír con confianza.
+                coronas, puentes y prótesis. Mejora tu capacidad para masticar, hablar y sonreír con
+                confianza.
               </p>
             </div>
           </div>
@@ -149,7 +149,7 @@
               <span>Periodoncia e Implantes</span>
               <p>
                 Recupera la salud de tus encías y reemplaza los dientes perdidos con implantes de
-                calidad. <q-space />Logra una sonrisa completa y duradera.
+                calidad.Logra una sonrisa completa y duradera.
               </p>
             </div>
           </div>
@@ -157,14 +157,14 @@
             <div class="card-content">
               <span>Endodoncia</span>
               <p>
-                Alivia el dolor y salva tus dientes dañados, evitando la extracción.
-                <q-space />Limpiando la raíz de tu diente de manera rápida y efectiva.
+                Alivia el dolor y salva tus dientes dañados, evitando la extracción. Limpiando la
+                raíz de tu diente de manera rápida y efectiva.
               </p>
             </div>
           </div>
           <div class="card">
             <div class="card-content">
-              <span>Cirugía Oral / Maxilofacial</span>
+              <span>Cirugía Oral/Maxilofacial</span>
               <p>
                 Soluciones quirúrgicas para corregir problemas de la boca, mandíbula y rostro, con
                 resultados precisos.
@@ -477,7 +477,7 @@
               transition-next="slide-left"
               swipeable
               animated
-              :autoplay="false"
+              :autoplay="autoplay"
               control-color="amber"
               navigation
               infinite
@@ -524,7 +524,7 @@
               transition-next="slide-left"
               swipeable
               animated
-              :autoplay="true"
+              :autoplay="false"
               control-color="amber"
               navigation
               infinite
