@@ -829,7 +829,7 @@ export default {
       slide: ref(1),
       autoplay: ref(true),
       pro_view: ref(false),
-      slide2: ref(1),
+      slide2: ref(14),
       navigationMenuItems: ref([
         { label: 'Home', href: '/' }, // Puedes usar Vue Router paths aquí
         {

@@ -38,7 +38,9 @@
     <div id="forms">
       <div id="container-form-map">
         <div id="s-title">
+          <p></p>
           <p>Separa tu cita o solicita tu cotización</p>
+          <p></p>
         </div>
 
         <div id="separate-appointment">
@@ -48,29 +50,23 @@
 
             <label>
               <input required="" placeholder="Nombres" type="text" class="input" />
-              <!-- <span>Nombres</span> -->
             </label>
 
             <label>
               <input required="" placeholder="Apellido" type="text" class="input" />
-              <!-- <span>Apellido</span> -->
             </label>
             <label>
               <input required="" placeholder="Email" type="email" class="input" />
-              <!-- <span>Email</span> -->
             </label>
             <label>
               <input required="" placeholder="Telefono" type="text" class="input" />
-              <!-- <span>Email</span> -->
             </label>
 
             <label>
               <input required="" placeholder="Servicio" type="text" class="input" />
-              <!-- <span>Servicio</span> -->
             </label>
             <label>
               <input required="" placeholder="Mensaje (Opcional)" type="text" class="input" />
-              <!-- <span>Mensaje (Opcional)</span> -->
             </label>
             <button class="submit">Solicitar</button>
             <p class="signin">Buscas conocer nuestros servicios? <a href="#">Ver Servicios</a></p>
@@ -79,8 +75,6 @@
           <div id="map">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2758.8627505224426!2d-77.05854473807422!3d-12.087412178864072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c9c0e36cf265%3A0x68f04984c5067ea4!2sConsultorio%20Odontol%C3%B3gico%20Dentodos!5e0!3m2!1ses!2spe!4v1747638896576!5m2!1ses!2spe"
-              width="800"
-              height="450"
               style="border: 0"
               allowfullscreen=""
               loading="lazy"
