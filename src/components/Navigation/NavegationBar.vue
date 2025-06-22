@@ -28,13 +28,14 @@
       </div>
     </div>
     <!-- :class="{ 'is-sticky-active': isStickyActive }" -->
-    <nav ref="navElement">
+    <!-- <nav ref="navElement">
       <div id="nav-main">
         <div id="logo-img" @click="routerMain()">
           <img src="/media/logos/logo_circle.png" alt="Dentodos" @click="routerMain()" />
         </div>
+
         <img src="/media/icons/menu_icon.svg" alt="Menú" class="toggle-btn" id="toggleBtn" />
-        <div id="nav-options" class="nav-options show">
+        <div id="nav-options" class="nav-options">
           <div v-for="linkItem in mainNavLinks" :key="linkItem.label">
             <a @click="goTo(linkItem.href)" v-if="!linkItem.submenu">{{ linkItem.label }}</a>
             <div v-else class="dropdown">
@@ -62,7 +63,78 @@
           >
         </div>
       </div>
-    </nav>
+    </nav> -->
+    <div class="container-navbar">
+      <!-- <nav class="navbar">
+        <div class="navbar-brand">MiSitio</div>
+        <div class="navbar-toggle" @click="toggleMenu">☰</div>
+        <div
+          :class="['navbar-menu', { show: showMenu }]"
+          id="menu"
+          v-for="(linkItem, index) in mainNavLinks"
+          :key="index"
+        >
+          <a class="linkItem" @click="goTo(linkItem.href)" v-if="!linkItem.submenu">{{
+            linkItem.label
+          }}</a>
+          <div v-else :class="['dropdown', { open: openStates[index] }]">
+            <a class="linkItem" @click="openDropdownMenu(index)"
+              >{{ linkItem.label }}
+              <img class="arrow-down" src="/media/icons/arrow_drop_down.svg" />
+            </a>
+            <div class="dropdown-menu" v-for="subItem in linkItem.submenu" :key="subItem.label">
+              <a @click="goTo(subItem.href)">{{ subItem.label }} </a>
+            </div>
+          </div>
+        </div>
+      </nav> -->
+      <nav class="navbar">
+        <div class="navbar-brand">
+          <div id="logo-img" @click="routerMain()">
+            <img src="/media/logos/logo_circle.png" alt="Dentodos" @click="routerMain()" />
+          </div>
+        </div>
+        <div class="navbar-toggle" @click="toggleMenu">☰</div>
+
+        <div :class="['navbar-menu', { show: showMenu }]" id="menu">
+          <div v-for="(linkItem, index) in mainNavLinks" :key="index" class="nav-item">
+            <!-- Enlace simple -->
+            <a class="linkItem" @click="goTo(linkItem.href)" v-if="!linkItem.submenu">
+              {{ linkItem.label }}
+            </a>
+
+            <!-- Enlace con submenú -->
+            <div v-else :class="['dropdown', { open: openStates[index] }]">
+              <a
+                class="linkItem"
+                @click.prevent="openDropdownMenu(index)"
+                style="display: flex; align-items: center"
+              >
+                {{ linkItem.label }}
+                <img
+                  :class="['arrow-down', { rotate: openStates[index] }]"
+                  src="/media/icons/arrow_drop_down.svg"
+                />
+              </a>
+              <div class="dropdown-menu">
+                <a
+                  v-for="subItem in linkItem.submenu"
+                  :key="subItem.label"
+                  @click="goTo(subItem.href)"
+                  >{{ subItem.label }}</a
+                >
+              </div>
+            </div>
+          </div>
+          <a
+            class="options__cotiza"
+            href="https://api.whatsapp.com/send?phone=51932033644"
+            target="_blank"
+            >Cotiza ahora</a
+          >
+        </div>
+      </nav>
+    </div>
   </div>
 </template>
 
@@ -76,6 +148,13 @@ export default {
       default: () => [], // Por defecto, un array vacío si no se proveen enlaces
       // Cada objeto en el array debería tener una estructura como: { label: 'Texto del Enlace', href: '/ruta' }
     },
+  },
+  data() {
+    return {
+      showMenu: false,
+      showItems: false,
+      openStates: {},
+    }
   },
 
   setup() {
@@ -109,20 +188,10 @@ export default {
       observer.observe(navElement.value)
       // Toggle menu con JS
       document.getElementById('toggleBtn').addEventListener('click', function () {
-        console.log('entre a funcion')
         const navOptions = document.getElementById('nav-options')
         navOptions.classList.toggle('show')
       })
       //      Para mostrar menu de opciones en caso no tenga show
-      function handleResize() {
-        const navOptions = document.getElementById('nav-options')
-        if (window.innerWidth >= 992 && !navOptions.classList.contains('show')) {
-          navOptions.classList.add('show')
-        }
-      }
-
-      window.addEventListener('resize', handleResize)
-      window.addEventListener('load', handleResize)
 
       // Dropdown manual con JS
       const toggles = document.querySelectorAll('.dropdown-toggle')
@@ -183,6 +252,14 @@ export default {
       } else {
         console.warn(`Elemento con ID '${elementId}' no encontrado para hacer scroll.`)
       }
+    },
+    toggleMenu() {
+      this.showMenu = !this.showMenu
+      console.log(this.showMenu)
+    },
+    openDropdownMenu(index) {
+      console.log(index)
+      this.openStates[index] = !this.openStates[index]
     },
     routerMain() {
       this.$router.push('/')

@@ -10,7 +10,7 @@
     <NavigationBar :mainNavLinks="navigationMenuItems" />
     <h1 id="title-service">Diseño de Sonrisa</h1>
     <div id="Tratamiento">
-      <div class="container-info">
+      <!-- <div class="container-info">
         <p>
           Es un tratamiento integral que combina tecnología de vanguardia y la experiencia de
           nuestros especialistas para lograr una sonrisa natural, armoniosa y en equilibrio con tu
@@ -31,7 +31,7 @@
       </div>
       <div class="container-img">
         <img src="media/photos/med-campain.jpg" alt="" />
-      </div>
+      </div> -->
     </div>
 
     <!-- <div id="VSL">
